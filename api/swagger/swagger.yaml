@@ -1,0 +1,103 @@
+swagger: '2.0'
+info:
+  title: swagger-sails-template API
+  description: Should be replaced with actuall Swagger Definition
+  version: "0.0.1"
+# the domain of the service
+host: localhost:1337
+# array of all schemes that your API supports
+schemes:
+  - http
+# will be prefixed to all paths
+basePath: /api/v1
+produces:
+  - application/json
+paths:
+  /users:
+    get:
+      summary: User Information
+      description: |
+        The endpoint returns information about a user.
+      parameters:
+        - name: userId
+          in: query
+          description: The email address of the user.
+          required: false
+          type: string
+      tags:
+        - Users
+      responses:
+        200:
+          description: An array of products
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/User'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      parameters:
+        - name: user
+          in: body
+          description: The pet JSON you want to post
+          schema:
+            $ref: '#/definitions/User'
+          required: true
+      tags:
+        - Users
+      responses:
+        200:
+          description: Make a new pet
+  /users/{guid}:
+    get:
+      parameters:
+        - name: guid
+          in: path
+          type: string
+          description: ID of the user
+          required: true
+      tags:
+        - Users
+      responses:
+        200:
+          description: Sends the User with GUID
+    put:
+      parameters:
+        - name: guid
+          in: path
+          type: string
+          description: ID of the user
+          required: true
+        - name: body
+          in: body
+          description: the description
+          required: false
+          schema: 
+            $ref: '#/definitions/User'
+      tags:
+        - Users
+      responses:
+        200:
+          description: Sends the User with GUID
+definitions:
+ User:
+     type: object
+     properties:
+       guid:
+        type: string
+        description: Unique identifier for the Account
+       userId:
+        type: string
+        description: Unique identifier for the Account
+ Error:
+    type: object
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
+      fields:
+        type: string
