@@ -1,3 +1,3 @@
 # swagger-sails-template
 
-a [Sails](http://sailsjs.org) application
+A Swagger [Sails](http://sailsjs.org) application.
