@@ -1,13 +1,14 @@
 swagger: '2.0'
 info:
   title: swagger-sails-template API
-  description: Should be replaced with actuall Swagger Definition
+  description: Should be replaced with actual Swagger Definition
   version: "0.0.1"
 # the domain of the service
 host: localhost:1337
 # array of all schemes that your API supports
 schemes:
   - http
+  - https
 # will be prefixed to all paths
 basePath: /api/v1
 produces:
@@ -74,7 +75,7 @@ paths:
           in: body
           description: the description
           required: false
-          schema: 
+          schema:
             $ref: '#/definitions/User'
       tags:
         - Users

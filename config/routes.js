@@ -34,18 +34,16 @@ module.exports.routes = {
 
   '/': {
     view: 'homepage'
-  },
+  }
 
-  /**
-   *  Unfortunately we need to defined Blueprint routes here due to
-   *  incompatibility with Swagger.
-   *  Another limitation of Swagger is we can't create sub-folder under controller for our
-   *  versioning strategy
-   *  TODO need to automate this task with swagger-codegen
-   */
+  /***************************************************************************
+  *                                                                          *
+  * Custom routes here...                                                    *
+  *                                                                          *
+  * If a request to a URL doesn't match any of the custom routes above, it   *
+  * is matched against Sails route blueprints. See `config/blueprints.js`    *
+  * for configuration options and examples.                                  *
+  *                                                                          *
+  ***************************************************************************/
 
-  'get /api/v1/users': 'UserController.find',
-  'post /api/v1/users': 'UserController.create',
-  'get /api/v1/users/:id': 'UserController.findOne',
-  'put /api/v1/users/:id': 'UserController.update'
 };
