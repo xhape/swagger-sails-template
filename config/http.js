@@ -41,7 +41,9 @@ module.exports.http = {
       'methodOverride',
       'poweredBy',
       '$custom',
+      'swaggerUI',
       'router',
+      'dummy',
       'www',
       'favicon',
       '404',
@@ -61,7 +63,12 @@ module.exports.http = {
 
     poweredBy: function(req, res, next) {
       res.setHeader('X-Powered-By', "Xhape Solutions");
-      next();
+      return next();
+    },
+
+    dummy: function(req, res, next) {
+      res.setHeader('X-Powered-By', "Xhape Solutions");
+      return next();
     }
 
     /***************************************************************************
@@ -81,6 +88,10 @@ module.exports.http = {
 
     // bodyParser: require('skipper')({strict: true})
 
+  },
+
+  customMiddleware:  function (app) {
+    require('./swagger.js').init(app);
   }
 
   /***************************************************************************
