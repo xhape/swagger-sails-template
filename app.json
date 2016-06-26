@@ -1,0 +1,11 @@
+{
+  "name": "swagger-sails-template",
+  "description": "A template for Creating Sails-Swagger App",
+  "logo": "https://avatars2.githubusercontent.com/u/19602900?v=3&u=909f5e8ab84a2a70d19fc45416b01935ab2440f4&s=140",
+  "repository": "https://github.com/xhape/swagger-sails-template.git",
+  "success_url": "/api/v1/users",
+  "addons": [
+    "logentries",
+    "mongolab"
+  ]
+}
