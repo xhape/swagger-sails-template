@@ -1,4 +1,4 @@
-var initializeSwagger  = require('swagger-tools').initializeMiddleware;
+var swaggerTools  = require('swagger-tools');
 var jsyaml = require('js-yaml');
 var fs = require('fs');
 
@@ -21,19 +21,18 @@ var swaggerDoc = jsyaml.safeLoad(spec);
 module.exports = {
   init: function(app){
     // Initialize the Swagger middleware
-    initializeSwagger(swaggerDoc, function (middleware) {
+    swaggerTools.initializeMiddleware(swaggerDoc, function (middleware) {
       // Interpret Swagger resources and attach metadata to request - must be first in swagger-tools middleware chain
       app.use(middleware.swaggerMetadata());
-
-      // Serve the Swagger documents and Swagger UI
-      app.use(middleware.swaggerUi(swaggerUiOptions));
 
       // Route validated requests to appropriate controller
       app.use(middleware.swaggerRouter(options));
 
+      // Serve the Swagger documents and Swagger UI
+      app.use(middleware.swaggerUi(swaggerUiOptions));
+
       // Validate Swagger requests
       app.use(middleware.swaggerValidator());
-
     });
   }
 };

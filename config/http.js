@@ -36,14 +36,12 @@ module.exports.http = {
       'session',
       'bodyParser',
       'handleBodyParserError',
+      '$custom',
       'myRequestLogger',
       'compress',
       'methodOverride',
       'poweredBy',
-      '$custom',
-      'swaggerUI',
       'router',
-      'dummy',
       'www',
       'favicon',
       '404',
@@ -62,11 +60,6 @@ module.exports.http = {
     },
 
     poweredBy: function(req, res, next) {
-      res.setHeader('X-Powered-By', "Xhape Solutions");
-      return next();
-    },
-
-    dummy: function(req, res, next) {
       res.setHeader('X-Powered-By', "Xhape Solutions");
       return next();
     }
@@ -91,6 +84,8 @@ module.exports.http = {
   },
 
   customMiddleware:  function (app) {
+    //TODO need to find a way to add custom middleware on preferred order, currently it's being added at the end
+    //of the list
     require('./swagger.js').init(app);
   }
 
